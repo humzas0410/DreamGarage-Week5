@@ -8,47 +8,14 @@
     <p><em>Welcome to The DreamGarage! The best place to find your dream cars.</em></p>
 </div>
 </header>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Trim</th>
-            <th>Electric?</th>
-            <th>Hybrid?</th>
-            <th>Details</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var car in Model)
-        {
-            <tr>
-                <td>@car.Make</td>
-                <td>@car.Model</td>
-                <td>@car.Trim</td>
-                <td>@if (car.IsElectric)
-                    {
-                        <span class="badge bg-success">Yes</span>
-                    }
-                    else
-                    {
-                        <span class="badge bg-danger">No</span>
-                    }
-                </td>
-                <td>@if (car.IsHybrid)
-                    {
-                        <span class="badge bg-success">Yes</span>
-                    }
-                    else
-                    {
-                        <span class="badge bg-danger">No</span>
-                    }
-                </td>
-                <td><a href="/Garage/Details/@car.Id" class="btn btn-primary">View Details</a></td>
-            </tr>
-        }
-    </tbody>
-    </table>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var car in Model)
+    {
+        <div class="col">
+            <partial name="_CarCard" model="car" />
+        </div>
+    }
+</div>
 @section Scripts {
     <script src="https://jgrissom.github.io/dotnet-web-dev/week-05/homework-checks.js"></script>
 }
